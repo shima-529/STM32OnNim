@@ -1,6 +1,8 @@
 # STM32 on Nim
 This repository aims at the working of STM32 on Nim language. Moreover, the startup routine leaves to be written on Nim without assembly.
 
+This program works well on STM32F303K8T6.
+
 # What is implemented
 - I/O registers
 	- `RCC`
