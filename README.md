@@ -13,9 +13,9 @@ This repository aims at the working of STM32 on Nim language. Moreover, the star
 	- `ld()` for volatile load
 		- e.g.) `GPIOA.ODR.ld` for getting the value
 	- `st()` for volatile store
-		- e.g.) `GPIOA.ODR.st 1` for loading 1 to GPIOA.ODR
+		- e.g.) `GPIOA.ODR.st 1` for storing 1 to GPIOA.ODR
 
-# Complile
+# Compile
 ```bash
 $ nim cc -c --cpu=arm --d:release --gc:none --os:standalone --deadCodeElim:on src/main.nim
 $ make
