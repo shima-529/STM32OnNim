@@ -20,7 +20,7 @@
 typedef struct tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw;
 typedef struct tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw;
 typedef struct tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA;
-typedef struct tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw;
+typedef struct tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA;
 struct tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw {
 NU32 CR1;
 NU32 CR2;
@@ -43,6 +43,7 @@ NU32 RSV2;
 NU32 DCR;
 NU32 DMAR;
 };
+typedef NI tyArray_GAcaPw08Gj9cXYhAaMMr9cfw[1];
 struct tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw {
 NU32 MODER;
 NU32 OTYPER;
@@ -71,28 +72,15 @@ NU32 AHBRSTR;
 NU32 CFGR2;
 NU32 CFGR3;
 };
-typedef NU32 tyArray_MpWsq9bBH14GsDQQ59cgyxAQ[8];
-typedef NU32 tyArray_BHbOSqU1t9b3Gt7K2c6fQig[24];
-typedef NU32 tyArray_w1HrpLTqYuul17OlwTATGw[56];
-typedef NU8 tyArray_wknELTfNGbUq9aI09bLKcmWQ[240];
-typedef NU32 tyArray_skVRt9aMy4p9aFnOi3BwXnJw[644];
-struct tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw {
-tyArray_MpWsq9bBH14GsDQQ59cgyxAQ ISER;
-tyArray_BHbOSqU1t9b3Gt7K2c6fQig RSV1;
-tyArray_MpWsq9bBH14GsDQQ59cgyxAQ ISCR;
-tyArray_BHbOSqU1t9b3Gt7K2c6fQig RSV2;
-tyArray_MpWsq9bBH14GsDQQ59cgyxAQ ISPR;
-tyArray_BHbOSqU1t9b3Gt7K2c6fQig RSV3;
-tyArray_MpWsq9bBH14GsDQQ59cgyxAQ ICPR;
-tyArray_BHbOSqU1t9b3Gt7K2c6fQig RSV4;
-tyArray_MpWsq9bBH14GsDQQ59cgyxAQ IABR;
-tyArray_w1HrpLTqYuul17OlwTATGw RSV5;
-tyArray_wknELTfNGbUq9aI09bLKcmWQ IP;
-tyArray_skVRt9aMy4p9aFnOi3BwXnJw RSV6;
-NU32 STIR;
+struct tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA {
+NU32 CTRL;
+NU32 LOAD;
+NU32 VAL;
+NU32 CALIB;
 };
 N_NIMCALL(void, TIM2_IRQHandler)(void);
-N_LIB_PRIVATE N_NIMCALL(void, mainProc2_rbimN4ouysYCcQ9cvzq9cqUA)(void);
+N_LIB_PRIVATE N_NIMCALL(void, mainProc1_rbimN4ouysYCcQ9cvzq9cqUA)(void);
+N_LIB_PRIVATE N_NIMCALL(void, ms_wait_1STNfWtGU0F4JBMGHtSHhg)(NI ms);
 NIM_EXTERNC N_NOINLINE(void, systemInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, systemDatInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, unknown_stm32Init000)(void);
@@ -101,59 +89,379 @@ NIM_EXTERNC N_NOINLINE(void, stdlib_volatileInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_volatileDatInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, NimMainModule)(void);
 NIM_EXTERNC N_NOINLINE(void, mainDatInit000)(void);
+NIM_CONST tyArray_GAcaPw08Gj9cXYhAaMMr9cfw TM_V45tF8B8NBcxFcjfe7lhBw_2 = {((NI) 1)}
+;
+NIM_CONST tyArray_GAcaPw08Gj9cXYhAaMMr9cfw TM_V45tF8B8NBcxFcjfe7lhBw_3 = {((NI) 0)}
+;
+NIM_CONST tyArray_GAcaPw08Gj9cXYhAaMMr9cfw TM_V45tF8B8NBcxFcjfe7lhBw_4 = {((NI) 17)}
+;
+NIM_CONST tyArray_GAcaPw08Gj9cXYhAaMMr9cfw TM_V45tF8B8NBcxFcjfe7lhBw_5 = {((NI) 16)}
+;
 
 N_NIMCALL(void, TIM2_IRQHandler)(void) {
 	{
 		NU32 res;
+		NI ret;
 		NU32 res_2;
+		NI ret_2;
+		NU32 res_3;
+		NI ret_3;
 		res = (NU32)0;
 		res = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
-		if (!!(((NU32)(res & ((NI) 2)) == ((NI) 0)))) goto LA3_;
-		*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = ((NI) 1);
+		ret = ((NI) 0);
+		{
+			NI i;
+			NI i_2;
+			i = (NI)0;
+			i_2 = ((NI) 0);
+			{
+				while (1) {
+					if (!(i_2 < ((NI) 1))) goto LA5;
+					i = TM_V45tF8B8NBcxFcjfe7lhBw_2[(i_2)- 0];
+					ret = (NI)(ret | (NI)((NU32)(((NI) 1)) << (NU32)(i)));
+					i_2 += ((NI) 1);
+				} LA5: ;
+			}
+		}
+		if (!!(((NU32)(res & ((NU32) (ret))) == ((NI) 0)))) goto LA6_;
 		res_2 = (NU32)0;
-		res_2 = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
-		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_2 & (NU32)((NU32) ~(((NU32) (((NI) 2))))));
-	}
-	LA3_: ;
-	{
-		NU32 res_3;
-		NU32 res_4;
+		res_2 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR));
+		ret_2 = ((NI) 0);
+		{
+			NI i_3;
+			NI i_4;
+			i_3 = (NI)0;
+			i_4 = ((NI) 0);
+			{
+				while (1) {
+					if (!(i_4 < ((NI) 1))) goto LA10;
+					i_3 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_4)- 0];
+					ret_2 = (NI)(ret_2 | (NI)((NU32)(((NI) 1)) << (NU32)(i_3)));
+					i_4 += ((NI) 1);
+				} LA10: ;
+			}
+		}
+		*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = (NU32)(res_2 & (NU32)((NU32) ~(((NU32) (ret_2)))));
 		res_3 = (NU32)0;
 		res_3 = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
-		if (!!(((NU32)(res_3 & ((NI) 1)) == ((NI) 0)))) goto LA7_;
-		*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = ((NI) 0);
+		ret_3 = ((NI) 0);
+		{
+			NI i_5;
+			NI i_6;
+			i_5 = (NI)0;
+			i_6 = ((NI) 0);
+			{
+				while (1) {
+					if (!(i_6 < ((NI) 1))) goto LA13;
+					i_5 = TM_V45tF8B8NBcxFcjfe7lhBw_2[(i_6)- 0];
+					ret_3 = (NI)(ret_3 | (NI)((NU32)(((NI) 1)) << (NU32)(i_5)));
+					i_6 += ((NI) 1);
+				} LA13: ;
+			}
+		}
+		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_3 & (NU32)((NU32) ~(((NU32) (ret_3)))));
+	}
+	LA6_: ;
+	{
+		NU32 res_4;
+		NI ret_4;
+		NU32 res_5;
+		NI ret_5;
+		NU32 res_6;
+		NI ret_6;
 		res_4 = (NU32)0;
 		res_4 = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
-		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_4 & (NU32)((NU32) ~(((NU32) (((NI) 1))))));
+		ret_4 = ((NI) 0);
+		{
+			NI i_7;
+			NI i_8;
+			i_7 = (NI)0;
+			i_8 = ((NI) 0);
+			{
+				while (1) {
+					if (!(i_8 < ((NI) 1))) goto LA18;
+					i_7 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_8)- 0];
+					ret_4 = (NI)(ret_4 | (NI)((NU32)(((NI) 1)) << (NU32)(i_7)));
+					i_8 += ((NI) 1);
+				} LA18: ;
+			}
+		}
+		if (!!(((NU32)(res_4 & ((NU32) (ret_4))) == ((NI) 0)))) goto LA19_;
+		res_5 = (NU32)0;
+		res_5 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR));
+		ret_5 = ((NI) 0);
+		{
+			NI i_9;
+			NI i_10;
+			i_9 = (NI)0;
+			i_10 = ((NI) 0);
+			{
+				while (1) {
+					if (!(i_10 < ((NI) 1))) goto LA23;
+					i_9 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_10)- 0];
+					ret_5 = (NI)(ret_5 | (NI)((NU32)(((NI) 1)) << (NU32)(i_9)));
+					i_10 += ((NI) 1);
+				} LA23: ;
+			}
+		}
+		*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = (NU32)(res_5 | ((NU32) (ret_5)));
+		res_6 = (NU32)0;
+		res_6 = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
+		ret_6 = ((NI) 0);
+		{
+			NI i_11;
+			NI i_12;
+			i_11 = (NI)0;
+			i_12 = ((NI) 0);
+			{
+				while (1) {
+					if (!(i_12 < ((NI) 1))) goto LA26;
+					i_11 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_12)- 0];
+					ret_6 = (NI)(ret_6 | (NI)((NU32)(((NI) 1)) << (NU32)(i_11)));
+					i_12 += ((NI) 1);
+				} LA26: ;
+			}
+		}
+		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_6 & (NU32)((NU32) ~(((NU32) (ret_6)))));
 	}
-	LA7_: ;
+	LA19_: ;
 }
 
-N_LIB_PRIVATE N_NIMCALL(void, mainProc2_rbimN4ouysYCcQ9cvzq9cqUA)(void) {
+N_LIB_PRIVATE N_NIMCALL(void, ms_wait_1STNfWtGU0F4JBMGHtSHhg)(NI ms) {
 	NU32 res;
-	NU32 res_2;
-	NU32 res_3;
+	NI ret;
 	NU32 res_4;
+	NI ret_3;
+	*((NU32 volatile*)((&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).LOAD))) = ((NI) 999);
+	*((NU32 volatile*)((&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).VAL))) = ((NI) 0);
+	res = (NU32)0;
+	res = (*(NU32 volatile*)(&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).CTRL));
+	ret = ((NI) 0);
+	{
+		NI i;
+		NI i_2;
+		i = (NI)0;
+		i_2 = ((NI) 0);
+		{
+			while (1) {
+				if (!(i_2 < ((NI) 1))) goto LA3;
+				i = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_2)- 0];
+				ret = (NI)(ret | (NI)((NU32)(((NI) 1)) << (NU32)(i)));
+				i_2 += ((NI) 1);
+			} LA3: ;
+		}
+	}
+	*((NU32 volatile*)((&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).CTRL))) = (NU32)(res | ((NU32) (ret)));
+	{
+		NI _;
+		NI res_2;
+		_ = (NI)0;
+		res_2 = ((NI) 1);
+		{
+			while (1) {
+				if (!(res_2 <= ms)) goto LA6;
+				_ = res_2;
+				{
+					while (1) {
+						NU32 res_3;
+						NI ret_2;
+						res_3 = (NU32)0;
+						res_3 = (*(NU32 volatile*)(&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).CTRL));
+						ret_2 = ((NI) 0);
+						{
+							NI i_3;
+							NI i_4;
+							i_3 = (NI)0;
+							i_4 = ((NI) 0);
+							{
+								while (1) {
+									if (!(i_4 < ((NI) 1))) goto LA11;
+									i_3 = TM_V45tF8B8NBcxFcjfe7lhBw_5[(i_4)- 0];
+									ret_2 = (NI)(ret_2 | (NI)((NU32)(((NI) 1)) << (NU32)(i_3)));
+									i_4 += ((NI) 1);
+								} LA11: ;
+							}
+						}
+						if (!!(!(((NU32)(res_3 & ((NU32) (ret_2))) == ((NI) 0))))) goto LA8;
+					} LA8: ;
+				}
+				res_2 += ((NI) 1);
+			} LA6: ;
+		}
+	}
+	res_4 = (NU32)0;
+	res_4 = (*(NU32 volatile*)(&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).CTRL));
+	ret_3 = ((NI) 0);
+	{
+		NI i_5;
+		NI i_6;
+		i_5 = (NI)0;
+		i_6 = ((NI) 0);
+		{
+			while (1) {
+				if (!(i_6 < ((NI) 1))) goto LA14;
+				i_5 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_6)- 0];
+				ret_3 = (NI)(ret_3 | (NI)((NU32)(((NI) 1)) << (NU32)(i_5)));
+				i_6 += ((NI) 1);
+			} LA14: ;
+		}
+	}
+	*((NU32 volatile*)((&(*((tyObject_st_systick_AeGvLdGpLb9bmp5cycZZWDA*) IL64(3758153744))).CTRL))) = (NU32)(res_4 & (NU32)((NU32) ~(((NU32) (ret_3)))));
+}
+
+N_LIB_PRIVATE N_NIMCALL(void, mainProc1_rbimN4ouysYCcQ9cvzq9cqUA)(void) {
+	NU32 res;
+	NI ret;
+	NU32 res_2;
+	NI ret_2;
 	res = (NU32)0;
 	res = (*(NU32 volatile*)(&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).AHBENR));
-	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).AHBENR))) = (NU32)(res | ((NU32) (((NI) 131072))));
+	ret = ((NI) 0);
+	{
+		NI i;
+		NI i_2;
+		i = (NI)0;
+		i_2 = ((NI) 0);
+		{
+			while (1) {
+				if (!(i_2 < ((NI) 1))) goto LA3;
+				i = TM_V45tF8B8NBcxFcjfe7lhBw_4[(i_2)- 0];
+				ret = (NI)(ret | (NI)((NU32)(((NI) 1)) << (NU32)(i)));
+				i_2 += ((NI) 1);
+			} LA3: ;
+		}
+	}
+	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).AHBENR))) = (NU32)(res | ((NU32) (ret)));
 	res_2 = (NU32)0;
 	res_2 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).MODER));
-	*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).MODER))) = (NU32)(res_2 | ((NU32) (((NI) 1))));
-	res_3 = (NU32)0;
-	res_3 = (*(NU32 volatile*)(&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).APB1ENR));
-	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).APB1ENR))) = (NU32)(res_3 | ((NU32) (((NI) 1))));
-	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).CR1))) = ((NI) 129);
-	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).DIER))) = ((NI) 3);
-	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).PSC))) = ((NI) 8000);
-	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).ARR))) = ((NI) 1000);
-	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).CCR1))) = ((NI) 500);
-	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).EGR))) = ((NI) 1);
-	res_4 = (NU32)0;
-	res_4 = (*(NU32 volatile*)(&(*((tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw*) IL64(3758153984))).ISER[(((NI) 0))- 0]));
-	*((NU32 volatile*)((&(*((tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw*) IL64(3758153984))).ISER[(((NI) 0))- 0]))) = (NU32)(res_4 | ((NU32) (((NI) 268435456))));
+	ret_2 = ((NI) 0);
+	{
+		NI i_3;
+		NI i_4;
+		i_3 = (NI)0;
+		i_4 = ((NI) 0);
+		{
+			while (1) {
+				if (!(i_4 < ((NI) 1))) goto LA6;
+				i_3 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_4)- 0];
+				ret_2 = (NI)(ret_2 | (NI)((NU32)(((NI) 1)) << (NU32)(i_3)));
+				i_4 += ((NI) 1);
+			} LA6: ;
+		}
+	}
+	*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).MODER))) = (NU32)(res_2 | ((NU32) (ret_2)));
 	{
 		while (1) {
+			{
+				NI i_5;
+				NI res_3;
+				i_5 = (NI)0;
+				res_3 = ((NI) 0);
+				{
+					while (1) {
+						NU32 res_4;
+						NI ret_3;
+						NU32 res_5;
+						NI ret_4;
+						if (!(res_3 <= ((NI) 20))) goto LA11;
+						i_5 = res_3;
+						res_4 = (NU32)0;
+						res_4 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR));
+						ret_3 = ((NI) 0);
+						{
+							NI i_6;
+							NI i_7;
+							i_6 = (NI)0;
+							i_7 = ((NI) 0);
+							{
+								while (1) {
+									if (!(i_7 < ((NI) 1))) goto LA14;
+									i_6 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_7)- 0];
+									ret_3 = (NI)(ret_3 | (NI)((NU32)(((NI) 1)) << (NU32)(i_6)));
+									i_7 += ((NI) 1);
+								} LA14: ;
+							}
+						}
+						*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = (NU32)(res_4 | ((NU32) (ret_3)));
+						ms_wait_1STNfWtGU0F4JBMGHtSHhg(i_5);
+						res_5 = (NU32)0;
+						res_5 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR));
+						ret_4 = ((NI) 0);
+						{
+							NI i_8;
+							NI i_9;
+							i_8 = (NI)0;
+							i_9 = ((NI) 0);
+							{
+								while (1) {
+									if (!(i_9 < ((NI) 1))) goto LA17;
+									i_8 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_9)- 0];
+									ret_4 = (NI)(ret_4 | (NI)((NU32)(((NI) 1)) << (NU32)(i_8)));
+									i_9 += ((NI) 1);
+								} LA17: ;
+							}
+						}
+						*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = (NU32)(res_5 & (NU32)((NU32) ~(((NU32) (ret_4)))));
+						ms_wait_1STNfWtGU0F4JBMGHtSHhg((NI)(((NI) 20) - i_5));
+						res_3 += ((NI) 1);
+					} LA11: ;
+				}
+			}
+			{
+				NI i_10;
+				NI res_6;
+				i_10 = (NI)0;
+				res_6 = ((NI) 0);
+				{
+					while (1) {
+						NU32 res_7;
+						NI ret_5;
+						NU32 res_8;
+						NI ret_6;
+						if (!(res_6 <= ((NI) 20))) goto LA20;
+						i_10 = res_6;
+						res_7 = (NU32)0;
+						res_7 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR));
+						ret_5 = ((NI) 0);
+						{
+							NI i_11;
+							NI i_12;
+							i_11 = (NI)0;
+							i_12 = ((NI) 0);
+							{
+								while (1) {
+									if (!(i_12 < ((NI) 1))) goto LA23;
+									i_11 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_12)- 0];
+									ret_5 = (NI)(ret_5 | (NI)((NU32)(((NI) 1)) << (NU32)(i_11)));
+									i_12 += ((NI) 1);
+								} LA23: ;
+							}
+						}
+						*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = (NU32)(res_7 | ((NU32) (ret_5)));
+						ms_wait_1STNfWtGU0F4JBMGHtSHhg((NI)(((NI) 20) - i_10));
+						res_8 = (NU32)0;
+						res_8 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR));
+						ret_6 = ((NI) 0);
+						{
+							NI i_13;
+							NI i_14;
+							i_13 = (NI)0;
+							i_14 = ((NI) 0);
+							{
+								while (1) {
+									if (!(i_14 < ((NI) 1))) goto LA26;
+									i_13 = TM_V45tF8B8NBcxFcjfe7lhBw_3[(i_14)- 0];
+									ret_6 = (NI)(ret_6 | (NI)((NU32)(((NI) 1)) << (NU32)(i_13)));
+									i_14 += ((NI) 1);
+								} LA26: ;
+							}
+						}
+						*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = (NU32)(res_8 & (NU32)((NU32) ~(((NU32) (ret_6)))));
+						ms_wait_1STNfWtGU0F4JBMGHtSHhg(i_10);
+						res_6 += ((NI) 1);
+					} LA20: ;
+				}
+			}
 		}
 	}
 }
@@ -193,7 +501,7 @@ int main(void) {
 }
 
 NIM_EXTERNC N_NOINLINE(void, NimMainModule)(void) {
-	mainProc2_rbimN4ouysYCcQ9cvzq9cqUA();
+	mainProc1_rbimN4ouysYCcQ9cvzq9cqUA();
 }
 
 NIM_EXTERNC N_NOINLINE(void, mainDatInit000)(void) {

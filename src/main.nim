@@ -1,16 +1,13 @@
 import stm32
 import volatile
 
-template `=`*[T: SomeInteger](reg: var T, val: T) =
-  volatileStore(reg.addr, val)
-
 proc ms_wait[T: SomeInteger](ms: T) =
   SysTick.LOAD.st 1000 - 1
   SysTick.VAL.st 0
-  SysTick.CTRL.st SysTick.CTRL.ld or 1
+  SysTick.CTRL.bset 0
   for _ in 1.T..ms:
-    while (SysTick.CTRL.ld and (1 shl 16)) == 0: discard
-  SysTick.CTRL.st SysTick.CTRL.ld and (not (1.word shl 0))
+    while SysTick.CTRL.bitIsClr(16): discard
+  SysTick.CTRL.bclr 0
 
 proc mainProc1() {.used.} =
   RCC.AHBENR.bset 17
@@ -31,23 +28,23 @@ proc mainProc2() {.used.} =
   RCC.AHBENR.bset(17)
   GPIOA.MODER.bset(0)
   RCC.APB1ENR.bset(0)
-  TIM2.CR1.st (1 shl 0) or (1 shl 7) # counter enable
-  TIM2.DIER.st (1 shl 0) or (1 shl 1) # interrupt on CC1 & Update
+  TIM2.CR1.bset(0, 7) # counter enable
+  TIM2.DIER.bset(0, 1) # interrupt on CC1 & Update
   TIM2.PSC.st 8000
   TIM2.ARR.st 1000
   TIM2.CCR1.st 500
-  TIM2.EGR.st 1
+  TIM2.EGR.bset(0)
   NVIC.ISER[28 shr 5].bset(28 and 0x1F)
   while true:
     discard
 
 
 proc TIM2_IRQHandler {.exportc.} =
-  if (TIM2.SR.ld and bit(1)) != 0:
-    GPIOA.ODR.st 1
+  if TIM2.SR.bitIsSet(1):
+    GPIOA.ODR.bclr(0)
     TIM2.SR.bclr(1)
-  if (TIM2.SR.ld and bit(0)) != 0:
-    GPIOA.ODR.st 0
+  if TIM2.SR.bitIsSet(0):
+    GPIOA.ODR.bset(0)
     TIM2.SR.bclr(0)
 
-mainProc2()
+mainProc1()
