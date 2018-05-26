@@ -1,14 +1,14 @@
 {"compile":[
-["/Users/yuki/stm32OnNim/proj/src/nimcache/main.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/proj/src/nimcache/main.o /Users/yuki/stm32OnNim/proj/src/nimcache/main.c"],
-["/Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_system.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_system.o /Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_system.c"],
-["/Users/yuki/stm32OnNim/proj/src/nimcache/stm32.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/proj/src/nimcache/stm32.o /Users/yuki/stm32OnNim/proj/src/nimcache/stm32.c"],
-["/Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_volatile.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_volatile.o /Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_volatile.c"]
+["/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/main.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/main.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/main.c"],
+["/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_system.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_system.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_system.c"],
+["/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stm32.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stm32.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stm32.c"],
+["/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_volatile.c", "gcc -c  -w -O3 -fno-strict-aliasing  -I/usr/local/Cellar/nim/0.18.0_1/nim/lib -o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_volatile.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_volatile.c"]
 ],
 "link":[
-"/Users/yuki/stm32OnNim/proj/src/nimcache/main.o",
-"/Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_system.o",
-"/Users/yuki/stm32OnNim/proj/src/nimcache/stm32.o",
-"/Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_volatile.o"
+"/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/main.o",
+"/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_system.o",
+"/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stm32.o",
+"/Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_volatile.o"
 ],
-"linkcmd": "gcc   -o /Users/yuki/stm32OnNim/proj/src/main  /Users/yuki/stm32OnNim/proj/src/nimcache/main.o /Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_system.o /Users/yuki/stm32OnNim/proj/src/nimcache/stm32.o /Users/yuki/stm32OnNim/proj/src/nimcache/stdlib_volatile.o    "
+"linkcmd": "gcc   -o /Users/yuki/stm32OnNim/STM32OnNim/src/main  /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/main.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_system.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stm32.o /Users/yuki/stm32OnNim/STM32OnNim/src/nimcache/stdlib_volatile.o    "
 }
