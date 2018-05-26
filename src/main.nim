@@ -9,7 +9,7 @@ proc ms_wait[T: SomeInteger](ms: T) =
     while (SysTick.CTRL.ld and (1 shl 16)) == 0: discard
   SysTick.CTRL.st SysTick.CTRL.ld and (not (1.word shl 0))
 
-proc mainProc1() =
+proc mainProc1() {.used.} =
   RCC.AHBENR.st RCC.AHBENR.ld or (1 shl 17)
   GPIOA.MODER.st GPIOA.MODER.ld or (1 shl 0)
   while true:
@@ -24,7 +24,7 @@ proc mainProc1() =
       GPIOA.ODR.st 0
       i.ms_wait
 
-proc mainProc2() =
+proc mainProc2() {.used.} =
   RCC.AHBENR.st RCC.AHBENR.ld or (1 shl 17)
   GPIOA.MODER.st GPIOA.MODER.ld or (1 shl 0)
   RCC.APB1ENR.st RCC.APB1ENR.ld or 1
