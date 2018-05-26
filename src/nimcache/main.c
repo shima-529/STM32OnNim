@@ -112,7 +112,7 @@ N_NIMCALL(void, TIM2_IRQHandler)(void) {
 		*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = ((NI) 1);
 		res_2 = (NU32)0;
 		res_2 = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
-		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_2 & ((NU32) -3));
+		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_2 & (NU32)((NU32) ~(((NU32) (((NI) 2))))));
 	}
 	LA3_: ;
 	{
@@ -124,7 +124,7 @@ N_NIMCALL(void, TIM2_IRQHandler)(void) {
 		*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).ODR))) = ((NI) 0);
 		res_4 = (NU32)0;
 		res_4 = (*(NU32 volatile*)(&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR));
-		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_4 & ((NU32) -2));
+		*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).SR))) = (NU32)(res_4 & (NU32)((NU32) ~(((NU32) (((NI) 1))))));
 	}
 	LA7_: ;
 }
@@ -133,22 +133,25 @@ N_LIB_PRIVATE N_NIMCALL(void, mainProc2_rbimN4ouysYCcQ9cvzq9cqUA)(void) {
 	NU32 res;
 	NU32 res_2;
 	NU32 res_3;
+	NU32 res_4;
 	res = (NU32)0;
 	res = (*(NU32 volatile*)(&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).AHBENR));
-	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).AHBENR))) = (NU32)(res | ((NU32) 131072));
+	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).AHBENR))) = (NU32)(res | ((NU32) (((NI) 131072))));
 	res_2 = (NU32)0;
 	res_2 = (*(NU32 volatile*)(&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).MODER));
-	*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).MODER))) = (NU32)(res_2 | ((NU32) 1));
+	*((NU32 volatile*)((&(*((tyObject_st_gpio_h1PU54W7WwiSvJVww2io9bw*) 1207959552)).MODER))) = (NU32)(res_2 | ((NU32) (((NI) 1))));
 	res_3 = (NU32)0;
 	res_3 = (*(NU32 volatile*)(&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).APB1ENR));
-	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).APB1ENR))) = (NU32)(res_3 | ((NU32) 1));
+	*((NU32 volatile*)((&(*((tyObject_st_rcc_MuzeLgc5IKig8i4T9bW3EeA*) 1073876992)).APB1ENR))) = (NU32)(res_3 | ((NU32) (((NI) 1))));
 	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).CR1))) = ((NI) 129);
 	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).DIER))) = ((NI) 3);
 	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).PSC))) = ((NI) 8000);
 	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).ARR))) = ((NI) 1000);
 	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).CCR1))) = ((NI) 500);
 	*((NU32 volatile*)((&(*((tyObject_st_tim234_efIwa2Bl9bVZnQybiPg9cSbw*) 1073741824)).EGR))) = ((NI) 1);
-	*((NU32 volatile*)((&(*((tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw*) IL64(3758153984))).ISER[(((NI) 0))- 0]))) = ((NI) 268435456);
+	res_4 = (NU32)0;
+	res_4 = (*(NU32 volatile*)(&(*((tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw*) IL64(3758153984))).ISER[(((NI) 0))- 0]));
+	*((NU32 volatile*)((&(*((tyObject_st_nvic_89cdN5dIxFWwR88uhxVZzLw*) IL64(3758153984))).ISER[(((NI) 0))- 0]))) = (NU32)(res_4 | ((NU32) (((NI) 268435456))));
 	{
 		while (1) {
 		}

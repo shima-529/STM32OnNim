@@ -112,3 +112,17 @@ template st*[T: SomeInteger, U: SomeInteger](reg: T, val: U) =
 template ld*[T: SomeInteger](reg: T): T =
   volatileLoad(reg.addr)
 
+template bit*[T: SomeInteger](n: T): T =
+  1 shl n
+
+template shift*[T, U: SomeInteger](reg: T, n: U): T =
+  reg shl n
+
+template bset*[T, U: SomeInteger](reg: T, n :U) =
+  reg.st reg.ld or cast[T](bit(n))
+
+template bclr*[T, U: SomeInteger](reg: T, n :U) =
+  reg.st reg.ld and not cast[T](bit(n))
+
+when isMainModule:
+  {.fatal: "This module must be imported for use, cannot run as a main module!"}
