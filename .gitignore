@@ -1,4 +1,4 @@
 *.o
 *.elf
 *.map
-src/nimcache/*
+src/nimcache
