@@ -34,7 +34,8 @@ proc mainProc2() {.used.} =
   TIM2.ARR.st 1000
   TIM2.CCR1.st 500
   TIM2.EGR.bset(0)
-  NVIC.ISER[28 shr 5].bset(28 and 0x1F)
+  TIM2_IRQn.enableIRQ
+  TIM2_IRQn.setPriority 0
   while true:
     discard
 
@@ -47,4 +48,4 @@ proc TIM2_IRQHandler {.exportc.} =
     GPIOA.ODR.bset(0)
     TIM2.SR.bclr(0)
 
-mainProc1()
+mainProc2()
