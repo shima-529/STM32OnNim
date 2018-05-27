@@ -100,6 +100,8 @@ NIM_EXTERNC N_NOINLINE(void, systemInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, systemDatInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, unknown_stm32Init000)(void);
 NIM_EXTERNC N_NOINLINE(void, unknown_stm32DatInit000)(void);
+NIM_EXTERNC N_NOINLINE(void, unknown_startupInit000)(void);
+NIM_EXTERNC N_NOINLINE(void, unknown_startupDatInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_volatileInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_volatileDatInit000)(void);
 NIM_EXTERNC N_NOINLINE(void, NimMainModule)(void);
@@ -384,9 +386,11 @@ N_LIB_PRIVATE N_NIMCALL(void, mainProc2_rbimN4ouysYCcQ9cvzq9cqUA)(void) {
 void PreMainInner(void) {
 	systemInit000();
 	unknown_stm32DatInit000();
+	unknown_startupDatInit000();
 	stdlib_volatileDatInit000();
 	mainDatInit000();
 	unknown_stm32Init000();
+	unknown_startupInit000();
 	stdlib_volatileInit000();
 }
 

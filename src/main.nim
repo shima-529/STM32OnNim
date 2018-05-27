@@ -1,4 +1,5 @@
 import stm32
+import startup
 import volatile
 
 proc ms_wait[T: SomeInteger](ms: T) =
