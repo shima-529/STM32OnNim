@@ -19,7 +19,6 @@ This program works well on STM32F303K8T6.
 
 # Compile
 ```bash
-$ nim cc -c --cpu=arm --d:release --gc:none --os:standalone --deadCodeElim:on src/main.nim
 $ make
 $ make flash
 ```
